@@ -8,7 +8,7 @@ This repository hosts [[https://srfi.schemers.org/srfi-188/][SRFI 188]]: Splicin
 
 This SRFI is in /draft/ status.
 
-See also [[https://srfi.schemers.org/srfi-148/][SRFI 148: Eager syntax-rules]].
+See also [[https://srfi.schemers.org/srfi-93/][SRFI 93: R6RS Syntax-Case Macros]] and [[https://srfi.schemers.org/srfi-148/][SRFI 148: Eager syntax-rules]].
 
 The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-188/srfi-188.html][SRFI Document]].
 
