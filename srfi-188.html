@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SRFI 188: Splicing binding constructs for syntactic
+keywords</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/srfi.css" type="text/css" />
+    <link href="/favicon.png" rel="icon" sizes="192x192" type="image/png" />
+  </head>
+
+  <body>
+
+<h1>Title</h1>
+
+Splicing binding constructs for syntactic keywords
+
+<h1>Author</h1>
+
+Marc Nieper-Wißkirchen
+
+<h1>Status</h1>
+
+<h1>Abstract</h1>
+
+<p>Splicing binding constructs for syntactic keywords are versions
+  of <code>let-syntax</code> and <code>letrec-syntax</code> that can
+  be used in a definition context in the same way
+  as <code>begin</code>.
+</p>
+
+<h1>Issues</h1>
+
+<p>There are at least three sensible names for a splicing version
+  of <code>let-syntax</code>,
+  namely <code>splicing-let-syntax</code>, <code>let-syntax-splicing</code>,
+  and <code>let-syntax/splicing</code>.  The same goes
+  for <code>letrec-syntax</code>.  Racket
+  uses <code>splicing-let-syntax</code>
+  and <code>splicing-letrec-syntax</code>.  What is the best choice?
+</p>
+
+<h1>Rationale</h1>
+
+<p>The R7RS defines two binding constructs for syntactic keywords,
+  namely <code>let-syntax</code> and <code>letrec-syntax</code>.  Both
+  are equivalent to their R5RS versions and are expressions.</p>
+
+<p>The R6RS versions of <code>let-syntax</code>
+  and <code>letrec-syntax</code> are equivalent to the R5RS/R7RS
+  version when they are not in a definition context.  In a definition
+  context, however, the R6RS versions splice their body forms in the
+  enclosing definition context.
+</p>
+
+<p>In some sense, the R6RS splicing versions are more fundamental than the
+  R5RS/R7RS non-splicing versions as one can easily define the
+  non-splicing versions by way of a <code>syntax-rules</code> macro in
+  terms of the splicing versions.  Moreover, the non-splicing versions
+  can also be defined by way of a <code>syntax-rules</code> macro in
+  terms of the local <code>define-syntax</code>.
+</p>
+
+<p>On the other hand, the splicing versions cannot be defined through
+  the non-splicing versions or <code>define-syntax</code>.
+</p>
+
+<p>The usefulness of the non-splicing versions seems to be
+  non-controversional.  For
+  example, <a href="https://srfi.schemers.org/srfi-148/srfi-148.html#em
+">SRFI
+  148's <code>em</code> syntax</a> would become unnecessary.
+</p>
+
+<p>Thus, this SRFI proposes the non-splicing versions
+  of <code>let-syntax</code> and <code>letrec-syntax</code> for R7RS
+  under a different name.
+</p>
+
+<h1>Specification</h1>
+
+<h2>Syntax</h2>
+
+<p><code>(splicing-let-syntax ((〈keyword〉 〈transformer spec〉) ...)
+〈body〉)</code></p>
+
+<p>Like <code>(let-syntax ((〈keyword〉 〈transformer spec〉) ...)
+    〈body〉)</code> except that in a definition context, the body
+  forms are spliced into the enclosing definition context (in the
+  same way as for <code>begin</code>).  Essentially the R6RS version
+  of <code>let-syntax</code>.
+</p>
+
+<p><code>(splicing-letrec-syntax ((〈keyword〉 〈transformer spec〉) ...)
+〈body〉)</code></p>
+
+<p>Like <code>(letrec-syntax ((〈keyword〉 〈transformer spec〉) ...)
+    〈body〉)</code> except that in a definition context, the body
+    forms are spliced into the enclosing definition context (in the
+    same way as for <code>begin</code>).  Essentially the R6RS version
+  of <code>letrec-syntax</code>.
+</p>
+
+<h1>Implementation</h1>
+
+<p>A portable R7RS implementation of the binding constructs described
+  here is not possible.
+</p>
+
+<p>They are provided by any R6RS implementation.  The R7RS
+  implementation Chibi Scheme also provides the binding constructs
+  described here.
+</p>
+
+<p>They are also provided by Racket.</p>
+
+<h1>Acknowledgements</h1>
+
+<p>The constructs described here aren't new but go back to the
+R4RS/R5RS (in the non-splicing version) and the R6RS (in the splicing
+version).  Thanks go to the editors of the (revised) reports on the
+algorithmic language Scheme.
+</p>
+
+<h1>Copyright</h1>
+Copyright &copy; Marc Nieper-Wißkirchen (2020).
+
+<p>
+  Permission is hereby granted, free of charge, to any person
+  obtaining a copy of this software and associated documentation files
+  (the "Software"), to deal in the Software without restriction,
+  including without limitation the rights to use, copy, modify, merge,
+  publish, distribute, sublicense, and/or sell copies of the Software,
+  and to permit persons to whom the Software is furnished to do so,
+  subject to the following conditions:
+
+<p>
+  The above copyright notice and this permission notice (including the
+  next paragraph) shall be included in all copies or substantial
+  portions of the Software.
+<p>
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+  ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+  <hr>
+  <address>Editor: <a
+href="mailto:srfi-editors+at+srfi+dot+schemers+dot+org">Arthur
+A. Gleckler</a></address></body></html>
