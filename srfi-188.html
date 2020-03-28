@@ -72,13 +72,13 @@ Marc Nieper-Wißkirchen
   the non-splicing versions or <code>define-syntax</code>.
 </p>
 
-<p>The usefulness of the non-splicing versions seems to be
+<p>The usefulness of the splicing versions seems to be
   non-controversional.  For
   example, <a href="https://srfi.schemers.org/srfi-148/srfi-148.html#em">SRFI
   148's <code>em</code> syntax</a> would become unnecessary.
 </p>
 
-<p>Thus, this SRFI proposes the non-splicing versions
+<p>Thus, this SRFI proposes splicing versions
   of <code>let-syntax</code> and <code>letrec-syntax</code> for R7RS
   under a different name.
 </p>
@@ -88,23 +88,31 @@ Marc Nieper-Wißkirchen
 <h2>Syntax</h2>
 
 <p><code>(splicing-let-syntax ((〈keyword〉 〈transformer spec〉) ...)
-〈body〉)</code></p>
+〈form〉 ...)</code></p>
 
 <p>Like <code>(let-syntax ((〈keyword〉 〈transformer spec〉) ...)
-    〈body〉)</code> except that in a definition context, the body
-  forms are spliced into the enclosing definition context (in the
-  same way as for <code>begin</code>).  Essentially the R6RS version
-  of <code>let-syntax</code>.
+    〈form〉 ...)</code> except that in a definition context, the forms
+  <code>〈form〉 ...</code> are spliced into the enclosing definition context (in the
+  same way as for <code>begin</code>).
+</p>
+    
+<p>Note: The R6RS version is a bit more restricted.  There, in a definition context,
+  the forms <code>〈form〉 ...</code> all have to be definitions and, in an expression
+  context, the forms <code>〈form〉 ...</code> all have to expressions.
 </p>
 
 <p><code>(splicing-letrec-syntax ((〈keyword〉 〈transformer spec〉) ...)
-〈body〉)</code></p>
+〈form〉 ...)</code></p>
 
 <p>Like <code>(letrec-syntax ((〈keyword〉 〈transformer spec〉) ...)
-    〈body〉)</code> except that in a definition context, the body
-    forms are spliced into the enclosing definition context (in the
-    same way as for <code>begin</code>).  Essentially the R6RS version
-  of <code>letrec-syntax</code>.
+    〈form〉 ...)</code> except that in a definition context, the forms
+  <code>〈form〉 ...</code> are spliced into the enclosing definition context (in the
+  same way as for <code>begin</code>).
+</p>
+
+<p>Note: The R6RS version is a bit more restricted.  There, in a definition context,
+  the forms <code>〈form〉 ...</code> all have to be definitions and, in an expression
+  context, the forms <code>〈form〉 ...</code> all have to expressions.
 </p>
 
 <h1>Implementation</h1>
@@ -113,12 +121,9 @@ Marc Nieper-Wißkirchen
   here is not possible.
 </p>
 
-<p>They are provided by any R6RS implementation.  The R7RS
-  implementation Chibi Scheme also provides the binding constructs
-  described here.
+<p>The splicing binding constructs as described here are at least provided by
+  Chibi Scheme, Chez Scheme, and Racket.
 </p>
-
-<p>They are also provided by Racket.</p>
 
 <h1>Acknowledgements</h1>
 
