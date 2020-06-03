@@ -74,8 +74,39 @@ Marc Nieper-Wißkirchen
 
 <p>Thus, this SRFI proposes splicing versions
   of <code>let-syntax</code> and <code>letrec-syntax</code> for R7RS
-  under a different name.
+  under a different name.  Note, however, that, in some corner cases,
+  the splicing versions cannot be a drop-in replacement for the
+  non-splicing forms (only that the non-splicing forms can be defined
+  as derived syntax in terms of the splicing forms).
 </p>
+
+<h1>Examples</h1>
+
+<p>The following examples show the difference between the non-splicing
+and splicing behavior.</p>
+
+<p>This expression evaluates to <code>let-syntax</code>.</p>
+
+<pre>
+(let ((x 'let-syntax))
+  (let-syntax ()
+    (define x 'splicing-let-syntax)
+    #f)
+  x)
+</pre>
+
+<p>This expression evaluates to <code>splicing-let-syntax</code>.</p>
+
+<pre>
+(let ((x 'let-syntax))
+  (splicing-let-syntax ()
+    (define x 'splicing-let-syntax)
+    #f)
+  x)
+</pre>
+
+<p>For more examples, see the test suite that comes bundled with this
+specification.<p/>
 
 <h1>Specification</h1>
 
@@ -89,7 +120,7 @@ Marc Nieper-Wißkirchen
   <code>〈form〉 ...</code> are spliced into the enclosing definition context (in the
   same way as for <code>begin</code>).
 </p>
-    
+
 <p>Note: The R6RS version is a bit more restricted.  There, in a definition context,
   the forms <code>〈form〉 ...</code> all have to be definitions and, in an expression
   context, the forms <code>〈form〉 ...</code> all have to expressions.
@@ -118,6 +149,9 @@ Marc Nieper-Wißkirchen
 <p>The splicing binding constructs as described here are at least provided by
   Chibi Scheme, Chez Scheme, and Racket.
 </p>
+
+<p>A Chibi Scheme implementation together with a SRFI 64 test suite is
+  bundled with this specification.</p>
 
 <h1>Acknowledgements</h1>
 
