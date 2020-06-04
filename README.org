@@ -8,7 +8,7 @@ keywords: [[https://srfi.schemers.org/?keywords=syntax][Syntax]]
 
 This repository hosts [[https://srfi.schemers.org/srfi-188/][SRFI 188]]: Splicing binding constructs for syntactic keywords, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
-This SRFI is in /draft/ status.
+This SRFI is in /final/ status.
 
 See also [[https://srfi.schemers.org/srfi-93/][SRFI 93: R6RS Syntax-Case Macros]] and [[https://srfi.schemers.org/srfi-148/][SRFI 148: Eager syntax-rules]].
 
