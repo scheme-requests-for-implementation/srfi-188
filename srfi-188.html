@@ -108,32 +108,32 @@ specification.<p/>
 
 <h2>Syntax</h2>
 
-<p><code>(splicing-let-syntax ((〈keyword〉 〈transformer spec〉) ...)
-〈form〉 ...)</code></p>
+<p><code>(splicing-let-syntax ((〈keyword〉 〈transformer spec〉) ...)
+〈form〉 ...)</code></p>
 
-<p>Like <code>(let-syntax ((〈keyword〉 〈transformer spec〉) ...)
-    〈form〉 ...)</code> except that in a definition context, the forms
-  <code>〈form〉 ...</code> are spliced into the enclosing definition context (in the
+<p>Like <code>(let-syntax ((〈keyword〉 〈transformer spec〉) ...)
+    〈form〉 ...)</code> except that in a definition context, the forms
+  <code>〈form〉 ...</code> are spliced into the enclosing definition context (in the
   same way as for <code>begin</code>).
 </p>
 
 <p>Note: The R6RS version is a bit more restricted.  There, in a definition context,
-  the forms <code>〈form〉 ...</code> all have to be definitions and, in an expression
-  context, the forms <code>〈form〉 ...</code> all have to expressions.
+  the forms <code>〈form〉 ...</code> all have to be definitions and, in an expression
+  context, the forms <code>〈form〉 ...</code> all have to expressions.
 </p>
 
-<p><code>(splicing-letrec-syntax ((〈keyword〉 〈transformer spec〉) ...)
-〈form〉 ...)</code></p>
+<p><code>(splicing-letrec-syntax ((〈keyword〉 〈transformer spec〉) ...)
+〈form〉 ...)</code></p>
 
-<p>Like <code>(letrec-syntax ((〈keyword〉 〈transformer spec〉) ...)
-    〈form〉 ...)</code> except that in a definition context, the forms
-  <code>〈form〉 ...</code> are spliced into the enclosing definition context (in the
+<p>Like <code>(letrec-syntax ((〈keyword〉 〈transformer spec〉) ...)
+    〈form〉 ...)</code> except that in a definition context, the forms
+  <code>〈form〉 ...</code> are spliced into the enclosing definition context (in the
   same way as for <code>begin</code>).
 </p>
 
 <p>Note: The R6RS version is a bit more restricted.  There, in a definition context,
-  the forms <code>〈form〉 ...</code> all have to be definitions and, in an expression
-  context, the forms <code>〈form〉 ...</code> all have to expressions.
+  the forms <code>〈form〉 ...</code> all have to be definitions and, in an expression
+  context, the forms <code>〈form〉 ...</code> all have to expressions.
 </p>
 
 <h1>Implementation</h1>
